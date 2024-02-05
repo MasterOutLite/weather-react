@@ -31,9 +31,9 @@ function Header() {
     }
   }
 
-  useEffect(() => {
-    i18n.changeLanguage(lan);
-  }, [])
+  // useEffect(() => {
+  //   i18n.changeLanguage(lan);
+  // }, [])
 
   return (
     <div className={style.root}>
