@@ -21,7 +21,7 @@ function CardWeatherIndexes({weathers, changeTemperature, temp, color}: CardWeat
   const currentWeather = weathers[0];
 
   function convertTemp(value: number) {
-    if (temp == TemperatureUnit.Celsius)
+    if (temp === TemperatureUnit.Celsius)
       return fahrenheitToCelsius(value);
     else
       return Math.floor(value);

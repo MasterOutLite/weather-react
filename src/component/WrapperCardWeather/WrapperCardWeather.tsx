@@ -6,7 +6,6 @@ import CardWeather from "../CardWeather/CardWeather";
 import style from './WrapperCardWeather.module.scss'
 import clsx from "clsx";
 import {removeCity} from "../../store/city/citySlice";
-import {Language} from "../../const/language";
 import {CitySearch} from "../../type/city-search";
 
 export interface WrapperCardWeatherProps {
@@ -19,7 +18,7 @@ function WrapperCardWeather({city, cardClass}: WrapperCardWeatherProps) {
   const dispatch = useDispatch()
   const {data, isError, error} = useGetWeatherByCityQuery({
     units: 'imperial',
-    lang: Language.EN,
+    lang: lan,
     cord: city.cord,
   });
 
@@ -29,9 +28,9 @@ function WrapperCardWeather({city, cardClass}: WrapperCardWeatherProps) {
 
   if (isError && error) {
     const {status} = error as { status: number };
-    if (status == 404) {
+    if (status === 404) {
       console.log(error, status)
-      //dispatch(removeCity(city));
+      dispatch(removeCity(city));
     }
   }
 

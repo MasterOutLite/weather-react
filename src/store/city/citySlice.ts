@@ -19,7 +19,7 @@ export const citySlice = createSlice({
     },
     removeCity(state: CityState, action: PayloadAction<CitySearch>) {
       console.log(action.payload)
-      state.city = state.city.filter(value => value.fullName != action.payload.fullName);
+      state.city = state.city.filter(value => value.fullName !== action.payload.fullName);
     },
   },
 })

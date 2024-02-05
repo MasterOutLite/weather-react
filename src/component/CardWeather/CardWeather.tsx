@@ -6,8 +6,7 @@ import {configCardWeatherFonts, weatherLineChartConfig} from "../../helper/weath
 import {TemperatureUnit} from "../../const/temperature-unit";
 import {fahrenheitToCelsiusArr} from "../../helper/convertTemperature";
 import {useTranslation} from 'react-i18next';
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../store/store";
+import {useDispatch} from "react-redux";
 import CardWeatherDate from "../CardWeatherDate/CardWeatherDate";
 import CardWeatherIndexes from "../CardWeatherIndexes/CardWeatherIndexes";
 import clsx from "clsx";
@@ -28,7 +27,7 @@ function CardWeather({weather, className, cardCity}: CardWeatherProps) {
   const {city, list} = weather
   const {t} = useTranslation();
   const [temp, setTemp] = useState<TemperatureUnit>(TemperatureUnit.Celsius);
-  const lang = useSelector((state: RootState) => state.language.lan);
+ // const lang = useSelector((state: RootState) => state.language.lan);
   const dispatch = useDispatch();
   const currentWeather = list[0];
 
@@ -42,7 +41,7 @@ function CardWeather({weather, className, cardCity}: CardWeatherProps) {
   }
 
   const weatherIndex = useMemo(() => {
-    if (temp == TemperatureUnit.Celsius) {
+    if (temp === TemperatureUnit.Celsius) {
       return fahrenheitToCelsiusArr(weatherConfig.temp);
     } else {
       return weatherConfig.temp.map(value => Math.floor(value));

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import style from './Header.module.scss'
-import {SelectChangeEvent} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {changeLanguage} from "../../store/language/languageSlice";
@@ -14,12 +13,7 @@ const language = [Language.EN, Language.UA];
 function Header() {
   const {i18n} = useTranslation();
   const lan = useSelector((state: RootState) => state.language.lan);
-  const dispatch = useDispatch()
-  const handleChange = (event: SelectChangeEvent) => {
-    const lan = event.target.value as Language;
-    dispatch(changeLanguage(lan));
-    i18n.changeLanguage(lan);
-  };
+  const dispatch = useDispatch();
 
   const [isFocusSelect, setIsFocusSelect] = useState<boolean>(false);
 
