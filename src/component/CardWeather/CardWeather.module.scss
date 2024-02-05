@@ -1,0 +1,57 @@
+.root {
+  position: relative;
+  background: #F1F2FF 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 6px #00000029;
+  border-radius: 5px;
+
+  padding: 10px 15px;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.alignItemsCenter {
+  align-items: center;
+}
+
+.alignItemsEnd {
+  align-items: end;
+}
+
+.justifyContentBetween {
+  justify-content: space-between;
+}
+
+.gap1 {
+  gap: 10px;
+}
+
+.city {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.weatherType {
+  margin: 0;
+  color: #C5C5C5;
+  padding-right: 15px;
+  font: normal normal normal 13px/19px Jost;
+}
+
+.btnClose{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: 0;
+}

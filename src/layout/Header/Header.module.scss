@@ -1,0 +1,59 @@
+.root {
+  display: flex;
+  justify-content: end;
+}
+
+.customSelect {
+  position: relative;
+  width: fit-content;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 0;
+
+  font-weight: 400;
+}
+
+.selectActive {
+  transform: scale(-1);
+}
+
+.selectText {
+  text-align: left;
+  font: normal normal normal 16px/23px Jost;
+  letter-spacing: 0;
+  color: #AFAFAF;
+
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.optionsBox {
+  position: absolute;
+  width: 100%;
+  margin-top: 8px;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 6px #00000029;
+  box-sizing: border-box;
+
+  text-align: left;
+}
+
+.hideSelect {
+  display: none;
+}
+
+.options {
+  cursor: pointer;
+  padding: 2px 5px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.optionSelected {
+  background: #F2F2F2 0 0 no-repeat padding-box;
+}
+

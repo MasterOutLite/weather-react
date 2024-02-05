@@ -1,0 +1,29 @@
+.card {
+  width: 350px;
+}
+
+.cardError {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #F154547B;
+  border-radius: 5px;
+}
+
+.errorText {
+  text-align: center;
+  margin: 0;
+}
+
+.btnRemove{
+  background: rgba(131, 26, 26, 0.84);
+  color: #FFFFFF;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 20px;
+
+  &:hover{
+    background: rgb(96, 11, 11);
+  }
+}
