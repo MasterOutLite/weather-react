@@ -7,16 +7,25 @@ import style from './WrapperCardWeather.module.scss'
 import clsx from "clsx";
 import {removeCity} from "../../store/city/citySlice";
 import {Language} from "../../const/language";
+import {CitySearch} from "../../type/city-search";
 
 export interface WrapperCardWeatherProps {
-  city: string;
+  city: CitySearch;
+  cardClass?: string;
 }
 
-function WrapperCardWeather({city}: WrapperCardWeatherProps) {
+function WrapperCardWeather({city, cardClass}: WrapperCardWeatherProps) {
   const lan = useSelector((state: RootState) => state.language.lan);
   const dispatch = useDispatch()
-  const {data, isError, error} = useGetWeatherByCityQuery({units: 'imperial', lang: Language.EN, q: city});
+  const {data, isError, error} = useGetWeatherByCityQuery({
+    units: 'imperial',
+    lang: Language.EN,
+    cord: city.cord,
+  });
 
+  function handleRemoveCard() {
+    dispatch(removeCity(city))
+  }
 
   if (isError && error) {
     const {status} = error as { status: number };
@@ -28,15 +37,21 @@ function WrapperCardWeather({city}: WrapperCardWeatherProps) {
 
   if (data)
     return (
-      <CardWeather className={style.card} weather={data} cardCity={city}/>
+      <CardWeather className={cardClass} weather={data} cardCity={city}/>
     );
-  else
+  else if (isError)
     return (
       <div className={clsx(style.card, style.cardError)}>
-        <p className={style.errorText}>City "{city}" not found!</p>
-        <button className={style.btnRemove}>Remove</button>
+        {/*<p className={style.errorText} >City "{city}" not found!</p>*/}
+        <button className={style.btnRemove}
+                onClick={handleRemoveCard}
+        >
+          Remove
+        </button>
       </div>
     );
+  else
+    return null;
 }
 
 export default WrapperCardWeather;

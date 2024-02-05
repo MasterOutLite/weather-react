@@ -13,14 +13,17 @@ import CardWeatherIndexes from "../CardWeatherIndexes/CardWeatherIndexes";
 import clsx from "clsx";
 import style from './CardWeather.module.scss'
 import {removeCity} from "../../store/city/citySlice";
+import {CitySearch} from "../../type/city-search";
 
 export interface CardWeatherProps {
-  cardCity: string,
+  cardCity: CitySearch,
   weather: WeatherResponse,
   className?: string,
 }
 
 function CardWeather({weather, className, cardCity}: CardWeatherProps) {
+  console.log('cardCity', cardCity);
+  console.log('weather.city', weather.city);
 
   const {city, list} = weather
   const {t} = useTranslation();
@@ -65,6 +68,7 @@ function CardWeather({weather, className, cardCity}: CardWeatherProps) {
 
       <div className={clsx(style.flexRow, style.alignItemsCenter, style.justifyContentBetween)}>
         <h6 className={style.city}>{city.name}, {city.country}</h6>
+        <h6 className={style.city}>{cardCity.fullName}</h6>
         <div className={clsx(style.flexRow, style.alignItemsCenter, style.gap1)}>
           <img height={40}
                src={getIconUrl(currentWeather.weather[0].icon)}

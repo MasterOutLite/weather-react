@@ -10,8 +10,17 @@ export const weatherApi = createApi({
   endpoints: (builder) => ({
     getWeatherByCity: builder.query<WeatherResponse, QueryWeather>({
       query: (options) => {
-        const queryRequest = {appid, ...options};
+        const queryRequest = {
+          appid,
+          lang: options.lang,
+          lon: options.cord?.lon,
+          lat: options.cord?.lat,
+          units: 'imperial',
+        };
+
         const query = queryString.stringify(queryRequest, {skipNull: true, skipEmptyString: true});
+        // console.log('queryRequest', queryRequest);
+        // console.log('query', query);
         return `forecast?${query}`
       },
     }),

@@ -27,15 +27,20 @@ function RenderListWeather() {
     <div className={style.box}>
       {
         weather ?
-          <div style={{width: 350}}>
-            <CardWeather weather={weather} cardCity={weather.city.name}/>
+          <div className={style.card}>
+            <CardWeather weather={weather}
+                         className={style.card}
+                         cardCity={{fullName: weather.city.name + `, ${weather.city.country}`}}/>
           </div>
           : null
       }
 
       {
         city.map(value =>
-          <WrapperCardWeather key={value} city={value}/>)
+          <div className={style.card}>
+            <WrapperCardWeather cardClass={style.card} key={value.fullName} city={value}/>
+          </div>
+        )
       }
     </div>
   );

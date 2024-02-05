@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import style from './Header.module.scss'
-import {MenuItem, Select, SelectChangeEvent} from "@mui/material";
+import {SelectChangeEvent} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {changeLanguage} from "../../store/language/languageSlice";
@@ -62,6 +62,8 @@ function Header() {
               d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/>
           </svg>
         </button>
+        <div onClick={handleChangeFocusSelect(false)}
+             className={isFocusSelect ? style.block : ''}></div>
 
         <div className={isFocusSelect ? style.optionsBox : style.hideSelect}>
           {
