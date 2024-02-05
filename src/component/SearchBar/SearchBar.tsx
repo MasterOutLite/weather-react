@@ -7,7 +7,6 @@ import style from './SearchBar.module.scss'
 import clsx from "clsx";
 import {getCityByName} from "../../helper/api/api";
 import {addCity} from "../../store/city/citySlice";
-import {Coordinates} from "../../type/coordinates";
 import {CitySearch} from "../../type/city-search";
 
 
