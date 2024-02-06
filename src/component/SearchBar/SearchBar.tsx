@@ -105,7 +105,7 @@ function SearchBar() {
             search && autocompleting.map((value, index) =>
               <div key={index + value.fullName}
                    onClick={handleSetCity(value)}
-                   className={clsx(style.textHistory, style.inputHistoryFocus)}
+                   className={clsx(style.textHistory)}
               >
                 {value.fullName ? value.fullName : value.state}
               </div>

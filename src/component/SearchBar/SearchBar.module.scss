@@ -10,8 +10,8 @@
   width: 100%;
   padding: 10px;
 
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 6px #00000029;
   border-radius: 5px;
 
   border: 0;
@@ -32,13 +32,13 @@
   position: absolute;
   left: 0;
   z-index: 101;
-  margin-top: 20px;
+  margin-top: 10px;
 
   width: 100%;
   text-align: start;
 
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 6px #00000029;
 }
 
 .hideHistory {
@@ -46,13 +46,15 @@
 }
 
 .textHistory {
+  padding: 0 5px;
+  margin: 0;
   font: normal normal normal 14px/20px Jost;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: #000000;
   cursor: pointer;
 
   &:hover {
-    background: #F2F2F2 0% 0% no-repeat padding-box;
+    background: #F2F2F2 0 0 no-repeat padding-box;
   }
 }
 
@@ -60,14 +62,14 @@
 .btn {
   padding: 10px 44px;
 
-  background: #459DE9 0% 0% no-repeat padding-box;
+  background: #459DE9 0 0 no-repeat padding-box;
   color: #FFFFFF;
-  box-shadow: 0px 3px 6px #00000029;
+  box-shadow: 0 3px 6px #00000029;
   border-radius: 5px;
   border: 0;
 
   font-size: 14px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
 }
 
 .block {
