@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import {WeatherResponse} from "../../type/weather-api/weather-response";
 import {CityResponse} from "../../type/city-response";
 
-const API_URL = 'http://api.openweathermap.org/data/2.5/'
+const API_URL = 'https://api.openweathermap.org/data/2.5/'
 const appid = process.env.REACT_APP_WEATHER_API_KEY;
 const units = 'imperial';
 
@@ -15,6 +15,6 @@ export async function getWeatherByCoordinates(cord: Coordinates) {
 }
 
 export async function getCityByName(name: string) {
-  const date = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=5&appid=${appid}`);
+  const date = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=5&appid=${appid}`);
   return await date.json() as CityResponse[];
 }

@@ -6,7 +6,7 @@ import queryString from "query-string";
 const appid = process.env.REACT_APP_WEATHER_API_KEY;
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',
-  baseQuery: fetchBaseQuery({baseUrl: 'http://api.openweathermap.org/data/2.5/'}),
+  baseQuery: fetchBaseQuery({baseUrl: 'https://api.openweathermap.org/data/2.5/'}),
   endpoints: (builder) => ({
     getWeatherByCity: builder.query<WeatherResponse, QueryWeather>({
       query: (options) => {
@@ -19,8 +19,6 @@ export const weatherApi = createApi({
         };
 
         const query = queryString.stringify(queryRequest, {skipNull: true, skipEmptyString: true});
-        // console.log('queryRequest', queryRequest);
-        // console.log('query', query);
         return `forecast?${query}`
       },
     }),

@@ -6,6 +6,8 @@
 }
 
 .input {
+  max-width: 570px;
+  width: 100%;
   padding: 10px;
 
   background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -17,19 +19,13 @@
 
   font-size: 14px;
 
-  @media (min-width: 768px) {
-    min-width: 570px;
-  }
 
-
-  @media (min-width: 0px) {
-    min-width: 200px;
-    width: max-content;
-  }
 }
 
 .inputRoot {
   position: relative;
+  max-width: 570px;
+  width: 100%;
 }
 
 .inputHistory {

@@ -6,4 +6,5 @@ export type CitySearch = {
   cord?: Coordinates;
   name?: string;
   country?: string;
+  state?: string;
 }

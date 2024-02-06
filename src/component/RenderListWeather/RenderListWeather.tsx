@@ -10,15 +10,14 @@ import style from './RenderListWeather.module.scss'
 
 function RenderListWeather() {
   const [weather, setWeather] = useState<WeatherResponse>();
-  const {city} = useSelector((state: RootState) => state.city)
+  const {city} = useSelector((state: RootState) => state.city);
+  // console.log(city);
 
   useEffect(() => {
     const get = async () => {
       const coordinates = await getGeolocation();
-      console.log('RenderListWeather', coordinates)
       const weather = await getWeatherByCoordinates(coordinates);
       setWeather(weather);
-      console.log(weather);
     }
     get();
   }, []);
@@ -27,18 +26,18 @@ function RenderListWeather() {
     <div className={style.box}>
       {
         weather ?
-          <div className={style.card}>
+          <div className={style.card} key={'default'}>
             <CardWeather weather={weather}
                          className={style.card}
-                         cardCity={{fullName: weather.city.name + `, ${weather.city.country}`}}/>
+                         cardCity={{fullName: '', name: weather.city.name, country: weather.city.country}}/>
           </div>
           : null
       }
 
       {
         city.map(value =>
-          <div className={style.card}>
-            <WrapperCardWeather cardClass={style.card} key={value.fullName} city={value}/>
+          <div className={style.card} key={value.fullName + value.state}>
+            <WrapperCardWeather cardClass={style.card} city={value}/>
           </div>
         )
       }

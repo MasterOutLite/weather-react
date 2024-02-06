@@ -20,15 +20,17 @@ function SearchBar() {
   const [isFocusSearch, setIsFocusSearch] = useState<boolean>(false);
   const {t} = useTranslation();
 
-  async function handleChangeSearch(e: ChangeEvent<HTMLInputElement>) {
+  function handleChangeSearch(e: ChangeEvent<HTMLInputElement>) {
     const {target: {value}} = e;
     setSearch(value);
     setCityCord(null);
 
-    await updateAutocompleting(value);
+    updateAutocompleting(value);
   }
 
   async function updateAutocompleting(name: string) {
+    if (!name)
+      return;
     const response = await getCityByName(name);
     if (!Array.isArray(response))
       return;
@@ -41,10 +43,11 @@ function SearchBar() {
         if (localName)
           search.localName = `${localName}, ${value.country}`;
       }
-      search.fullName = `${value.name}, ${value.country}`;
+      if (value.name)
+        search.fullName = `${value.name}, ${value.country}`;
 
-      let state = value.state ? `${value.state}` : '';
-      if (search.fullName) {
+      let state = value.state ? value.state : '';
+      if (search.fullName && state) {
         state = ', ' + state;
       }
 
@@ -53,6 +56,8 @@ function SearchBar() {
       search.name = value.name;
       search.country = value.country
       search.cord = {lat: value.lat, lon: value.lon};
+      search.state = value.state;
+
       return search
     })
 
@@ -61,7 +66,6 @@ function SearchBar() {
 
   function handleAddSearchHistory() {
     if (!search || !cityCord) {
-      alert('')
       return;
     }
 
@@ -79,7 +83,6 @@ function SearchBar() {
 
   function handleSetCity(search: CitySearch) {
     return () => {
-      console.log(search)
       setSearch(() => search.fullName);
       setCityCord(() => search);
       setIsFocusSearch(false);
@@ -103,7 +106,10 @@ function SearchBar() {
               <div key={index + value.fullName}
                    onClick={handleSetCity(value)}
                    className={clsx(style.textHistory, style.inputHistoryFocus)}
-              >{value.localName ? value.localName : value.fullName}</div>)
+              >
+                {value.fullName ? value.fullName : value.state}
+              </div>
+            )
           }
         </div>
       </div>

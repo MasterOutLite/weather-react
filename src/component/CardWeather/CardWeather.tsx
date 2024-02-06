@@ -21,13 +21,12 @@ export interface CardWeatherProps {
 }
 
 function CardWeather({weather, className, cardCity}: CardWeatherProps) {
-  console.log('cardCity', cardCity);
-  console.log('weather.city', weather.city);
+  // console.log('cardCity', cardCity);
+  // console.log('weather.city', weather.city);
 
-  const {city, list} = weather
+  const {list} = weather
   const {t} = useTranslation();
   const [temp, setTemp] = useState<TemperatureUnit>(TemperatureUnit.Celsius);
- // const lang = useSelector((state: RootState) => state.language.lan);
   const dispatch = useDispatch();
   const currentWeather = list[0];
 
@@ -66,8 +65,7 @@ function CardWeather({weather, className, cardCity}: CardWeatherProps) {
       </div>
 
       <div className={clsx(style.flexRow, style.alignItemsCenter, style.justifyContentBetween)}>
-        <h6 className={style.city}>{city.name}, {city.country}</h6>
-        <h6 className={style.city}>{cardCity.fullName}</h6>
+        <h6 className={style.city}>{cardCity.name}, {cardCity.country}</h6>
         <div className={clsx(style.flexRow, style.alignItemsCenter, style.gap1)}>
           <img height={40}
                src={getIconUrl(currentWeather.weather[0].icon)}
