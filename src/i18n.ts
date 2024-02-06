@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import {initReactI18next} from "react-i18next";
 import {Language} from "./const/language";
+// import LanguageDetector from 'i18next-browser-languagedetector';
 
 const resources = {
   [Language.EN]: {
@@ -65,7 +66,7 @@ i18n
     lng: "en",
     interpolation: {
       escapeValue: false
-    }
+    },
   })
 ;
 
