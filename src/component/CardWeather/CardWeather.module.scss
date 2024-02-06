@@ -47,9 +47,13 @@
   color: #C5C5C5;
   padding-right: 15px;
   font: normal normal normal 13px/19px Jost;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
-.btnClose{
+.btnClose {
   position: absolute;
   top: 0;
   right: 0;

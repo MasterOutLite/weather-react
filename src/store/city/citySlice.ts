@@ -22,16 +22,16 @@ export const citySlice = createSlice({
     },
     removeCity(state: CityState, action: PayloadAction<CitySearch>) {
       state.city = state.city.filter(value => value.fullName !== action.payload.fullName);
-      if (state.defaultCity?.fullName == action.payload.fullName)
+      if (state.defaultCity?.fullName === action.payload.fullName)
         state.defaultCity = undefined;
     },
     changeTemp(state: CityState, action: PayloadAction<{ fullName: string, temp: TemperatureUnit }>) {
-      const cityIndex = state.city.findIndex(value => value.fullName == action.payload.fullName);
+      const cityIndex = state.city.findIndex(value => value.fullName === action.payload.fullName);
       if (cityIndex !== -1) {
         state.city[cityIndex].unit = action.payload.temp;
         return;
       }
-      if (state.defaultCity?.fullName == action.payload.fullName)
+      if (state.defaultCity?.fullName === action.payload.fullName)
         state.defaultCity.unit = action.payload.temp;
     },
     setDefault(state: CityState, action: PayloadAction<CitySearch>) {

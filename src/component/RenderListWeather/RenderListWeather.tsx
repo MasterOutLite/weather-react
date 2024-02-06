@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getWeatherByCoordinates} from "../../helper/api/api";
 import {getGeolocation} from "../../helper/geolocation";
-import CardWeather from "../CardWeather/CardWeather";
 import {WeatherResponse} from "../../type/weather-api/weather-response";
 import WrapperCardWeather from "../WrapperCardWeather/WrapperCardWeather";
 import {useDispatch, useSelector} from "react-redux";
@@ -23,6 +22,7 @@ function RenderListWeather() {
       setWeather(weather);
     }
     get();
+    // eslint-disable-next-line
   }, []);
 
   return (

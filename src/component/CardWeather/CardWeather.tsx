@@ -5,7 +5,6 @@ import TemperatureGraph from "../TemperatureGraph/TemperatureGraph";
 import {configCardWeatherFonts, weatherLineChartConfig} from "../../helper/weatherLineChartConfig";
 import {TemperatureUnit} from "../../const/temperature-unit";
 import {fahrenheitToCelsiusArr} from "../../helper/convertTemperature";
-import {useTranslation} from 'react-i18next';
 import {useDispatch} from "react-redux";
 import CardWeatherDate from "../CardWeatherDate/CardWeatherDate";
 import CardWeatherIndexes from "../CardWeatherIndexes/CardWeatherIndexes";
@@ -22,7 +21,7 @@ export interface CardWeatherProps {
 
 function CardWeather({weather, className, cardCity}: CardWeatherProps) {
   const {list} = weather
-  const {t} = useTranslation();
+  // const {t} = useTranslation();
   const [temp, setTemp] = useState<TemperatureUnit>(cardCity.unit || TemperatureUnit.Celsius);
   const dispatch = useDispatch();
   const currentWeather = list[0];
@@ -69,7 +68,8 @@ function CardWeather({weather, className, cardCity}: CardWeatherProps) {
                src={getIconUrl(currentWeather.weather[0].icon)}
                alt={currentWeather.weather[0].description}/>
           <p className={style.weatherType}>
-            {t(currentWeather.weather[0].main)}
+            {/*{t(currentWeather.weather[0].main)}*/}
+            {currentWeather.weather[0].description}
           </p>
         </div>
       </div>

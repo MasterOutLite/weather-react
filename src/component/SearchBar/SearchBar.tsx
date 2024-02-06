@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
@@ -18,7 +18,7 @@ function SearchBar() {
   const [search, setSearch] = useState<string>('');
   const [cityCord, setCityCord] = useState<CitySearch | null>();
   const [isFocusSearch, setIsFocusSearch] = useState<boolean>(false);
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
 
   function handleChangeSearch(e: ChangeEvent<HTMLInputElement>) {
     const {target: {value}} = e;
