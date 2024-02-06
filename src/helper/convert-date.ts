@@ -6,8 +6,12 @@ const monthsEN = ["January", "February", "March", "April",
 const monthsUA = ["Січень", "Лютий", "Березень", "Квітень",
   "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
 
+const monthsHE = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר",
+  "אוקטובר", "נובמבר", "דצמבר"];
+
 let daysEN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let daysUA = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
+let daysHE = ["יום ראשון", "יום שני", "יום שלישי", "יום רביעי", "יום חמישי", "יום שישי", "יום שבת"];
 
 export function convertDate(date: Date, lan: Language) {
   const {days, months} = configDate(lan);
@@ -28,6 +32,9 @@ export function configDate(lan: Language) {
     }
     case Language.UA : {
       return {days: daysUA, months: monthsUA}
+    }
+    case Language.HE : {
+      return {days: daysHE, months: monthsHE}
     }
     default: {
       return {days: daysEN, months: monthsEN}

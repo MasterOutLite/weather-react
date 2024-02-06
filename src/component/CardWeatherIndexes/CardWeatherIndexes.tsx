@@ -52,13 +52,16 @@ function CardWeatherIndexes({weathers, changeTemperature, temp, color}: CardWeat
 
         </div>
 
-        <p className={style.feelsLike}>{t('Feels like')} {convertTemp(currentWeather.main.feels_like)} °C</p>
+        <p className={style.feelsLike}>
+          {t('Feels like')} {convertTemp(currentWeather.main.feels_like)}
+          {temp === TemperatureUnit.Celsius ? '°C' : '°F'}
+        </p>
       </div>
 
       <article>
         <CardWeatherIndexesText color={color}
                                 title={t('Wind')}
-                                text={currentWeather.wind.speed + ' m/s'}/>
+                                text={t('WindIndex', {speed: currentWeather.wind.speed})}/>
 
         <CardWeatherIndexesText color={color}
                                 title={t('Humidity')}

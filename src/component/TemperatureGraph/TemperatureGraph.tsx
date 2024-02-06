@@ -93,6 +93,7 @@ function TemperatureGraph({values, labels, background}: TemperatureGraphProps) {
         tension: 0.4,
         borderColor: 'transparent',
         pointRadius: 0,
+        pointHitRadius: 0,
         gradient: {
           backgroundColor: background
         },

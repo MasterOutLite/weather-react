@@ -8,7 +8,7 @@ import {useTranslation} from "react-i18next";
 import clsx from "clsx";
 
 
-const language = [Language.EN, Language.UA];
+const language = [Language.EN, Language.UA, Language.HE];
 
 function Header() {
   const {i18n} = useTranslation();
@@ -27,13 +27,10 @@ function Header() {
     return () => {
       dispatch(changeLanguage(value));
       i18n.changeLanguage(value);
+      document.body.dir = i18n.dir();
       setIsFocusSelect(false);
     }
   }
-
-  // useEffect(() => {
-  //   i18n.changeLanguage(lan);
-  // }, [])
 
   return (
     <div className={style.root}>

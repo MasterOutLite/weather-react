@@ -15,6 +15,7 @@ function App() {
 
   useEffect(() => {
     i18n.changeLanguage(lan);
+    document.body.dir = i18n.dir();
 // eslint-disable-next-line
   }, [])
 

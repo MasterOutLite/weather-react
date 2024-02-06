@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
@@ -18,7 +18,9 @@ function SearchBar() {
   const [search, setSearch] = useState<string>('');
   const [cityCord, setCityCord] = useState<CitySearch | null>();
   const [isFocusSearch, setIsFocusSearch] = useState<boolean>(false);
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
+  const [btnText, setBtnText] = useState<string>(t('Add').toString());
+
 
   function handleChangeSearch(e: ChangeEvent<HTMLInputElement>) {
     const {target: {value}} = e;
@@ -89,6 +91,11 @@ function SearchBar() {
     }
   }
 
+  useEffect(() => {
+    i18n.changeLanguage(lan);
+    setBtnText(t('Add'));
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <div className={style.root}>
@@ -114,8 +121,7 @@ function SearchBar() {
         </div>
       </div>
 
-
-      <button className={style.btn} onClick={handleAddSearchHistory}>{t('Add')}</button>
+      <button className={style.btn} onClick={handleAddSearchHistory}>{btnText}</button>
     </div>
   );
 }
