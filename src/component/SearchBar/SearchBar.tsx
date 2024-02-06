@@ -95,6 +95,7 @@ function SearchBar() {
       <div className={style.inputRoot}>
         <input onFocus={changeFocus(true)}
                value={search}
+               placeholder={t('Enter city', {lng: lan})}
                onChange={handleChangeSearch} type='text' className={style.input}/>
         <div
           onClick={changeFocus(false)}

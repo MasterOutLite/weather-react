@@ -1,7 +1,6 @@
 import i18n from "i18next";
 import {initReactI18next} from "react-i18next";
 import {Language} from "./const/language";
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 const resources = {
   [Language.EN]: {
@@ -18,6 +17,7 @@ const resources = {
       "Humidity": "Humidity:",
       "Pressure": "Pressure:",
       "Add": "Add",
+      "Enter city": "Enter the name of the city",
     }
   },
   [Language.UA]: {
@@ -34,6 +34,7 @@ const resources = {
       "Humidity": "Вологість:",
       "Pressure": "Тиск:",
       "Add": "Додати",
+      "Enter city": "Введіть назву міста",
     }
   },
   [Language.HE]: {
@@ -50,12 +51,13 @@ const resources = {
       "Humidity": "לחות:",
       "Pressure": "לַחַץ:",
       "Add": "לְהוֹסִיף",
+      "Enter city": "הזן את שם העיר",
     }
   },
 };
 
 i18n
-  .use(LanguageDetector)
+  // .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,

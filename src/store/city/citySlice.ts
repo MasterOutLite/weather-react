@@ -18,7 +18,7 @@ export const citySlice = createSlice({
   initialState,
   reducers: {
     addCity(state: CityState, action: PayloadAction<CitySearch>) {
-      state.city.push(action.payload);
+      state.city.unshift(action.payload);
     },
     removeCity(state: CityState, action: PayloadAction<CitySearch>) {
       state.city = state.city.filter(value => value.fullName !== action.payload.fullName);
