@@ -1,4 +1,5 @@
 import {Coordinates} from "./coordinates";
+import {TemperatureUnit} from "../const/temperature-unit";
 
 export type CitySearch = {
   fullName: string;
@@ -7,4 +8,5 @@ export type CitySearch = {
   name?: string;
   country?: string;
   state?: string;
+  unit?: TemperatureUnit;
 }

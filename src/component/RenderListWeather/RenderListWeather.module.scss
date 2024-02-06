@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 30px ;
+  justify-content: space-evenly;
+  gap: 30px;
 }
 
 .card {
@@ -13,11 +13,11 @@
   }
 
   @media (min-width: 576px) {
-    max-width: 350px;
+    max-width: 330px;
   }
 
   @media (min-width: 768px) {
-
+    max-width: 350px;
   }
 
   @media (min-width: 992px) {

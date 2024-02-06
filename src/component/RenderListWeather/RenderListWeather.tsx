@@ -4,19 +4,22 @@ import {getGeolocation} from "../../helper/geolocation";
 import CardWeather from "../CardWeather/CardWeather";
 import {WeatherResponse} from "../../type/weather-api/weather-response";
 import WrapperCardWeather from "../WrapperCardWeather/WrapperCardWeather";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import style from './RenderListWeather.module.scss'
+import {setDefault} from "../../store/city/citySlice";
 
 function RenderListWeather() {
   const [weather, setWeather] = useState<WeatherResponse>();
-  const {city} = useSelector((state: RootState) => state.city);
-  // console.log(city);
+  const {city, defaultCity} = useSelector((state: RootState) => state.city);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const get = async () => {
       const coordinates = await getGeolocation();
       const weather = await getWeatherByCoordinates(coordinates);
+      const {city} = weather;
+      dispatch(setDefault({fullName: 'default', name: city.name, country: city.country, cord: city.coord}))
       setWeather(weather);
     }
     get();
@@ -25,11 +28,14 @@ function RenderListWeather() {
   return (
     <div className={style.box}>
       {
-        weather ?
-          <div className={style.card} key={'default'}>
-            <CardWeather weather={weather}
-                         className={style.card}
-                         cardCity={{fullName: '', name: weather.city.name, country: weather.city.country}}/>
+        weather && defaultCity ?
+          <div className={style.card}>
+            {/*<CardWeather weather={weather}*/}
+            {/*             className={style.card}*/}
+            {/*             cardCity={defaultCity}*/}
+
+            {/*/>*/}
+            <WrapperCardWeather cardClass={style.card} city={defaultCity}/>
           </div>
           : null
       }

@@ -11,7 +11,7 @@ import CardWeatherDate from "../CardWeatherDate/CardWeatherDate";
 import CardWeatherIndexes from "../CardWeatherIndexes/CardWeatherIndexes";
 import clsx from "clsx";
 import style from './CardWeather.module.scss'
-import {removeCity} from "../../store/city/citySlice";
+import {changeTemp, removeCity} from "../../store/city/citySlice";
 import {CitySearch} from "../../type/city-search";
 
 export interface CardWeatherProps {
@@ -21,12 +21,9 @@ export interface CardWeatherProps {
 }
 
 function CardWeather({weather, className, cardCity}: CardWeatherProps) {
-  // console.log('cardCity', cardCity);
-  // console.log('weather.city', weather.city);
-
   const {list} = weather
   const {t} = useTranslation();
-  const [temp, setTemp] = useState<TemperatureUnit>(TemperatureUnit.Celsius);
+  const [temp, setTemp] = useState<TemperatureUnit>(cardCity.unit || TemperatureUnit.Celsius);
   const dispatch = useDispatch();
   const currentWeather = list[0];
 
@@ -36,6 +33,7 @@ function CardWeather({weather, className, cardCity}: CardWeatherProps) {
   function handleChangeTemperature(temp: TemperatureUnit) {
     return () => {
       setTemp(temp);
+      dispatch(changeTemp({fullName: cardCity.fullName, temp}))
     }
   }
 

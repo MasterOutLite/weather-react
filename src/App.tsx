@@ -22,7 +22,7 @@ function App() {
   return (
     <Suspense>
       <div className="App" style={{padding: 25}}>
-        <Header/>
+        <Header />
         <div style={{paddingBottom: 40}}>
           <SearchBar/>
         </div>

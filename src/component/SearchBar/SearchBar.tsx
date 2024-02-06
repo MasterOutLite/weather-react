@@ -19,8 +19,6 @@ function SearchBar() {
   const [cityCord, setCityCord] = useState<CitySearch | null>();
   const [isFocusSearch, setIsFocusSearch] = useState<boolean>(false);
   const {t, i18n} = useTranslation();
-  const [btnText, setBtnText] = useState<string>(t('Add').toString());
-
 
   function handleChangeSearch(e: ChangeEvent<HTMLInputElement>) {
     const {target: {value}} = e;
@@ -91,12 +89,6 @@ function SearchBar() {
     }
   }
 
-  useEffect(() => {
-    i18n.changeLanguage(lan);
-    setBtnText(t('Add'));
-    // eslint-disable-next-line
-  }, [])
-
   return (
     <div className={style.root}>
 
@@ -120,8 +112,7 @@ function SearchBar() {
           }
         </div>
       </div>
-
-      <button className={style.btn} onClick={handleAddSearchHistory}>{btnText}</button>
+      <button className={style.btn} onClick={handleAddSearchHistory}>{t('Add', {lng: lan})}</button>
     </div>
   );
 }
