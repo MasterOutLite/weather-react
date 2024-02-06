@@ -6,6 +6,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const resources = {
   [Language.EN]: {
     translation: {
+      "title": "Weather",
       "Clouds": "Clouds",
       "Sunny": "Sunny",
       "Rain": "Rain",
@@ -21,6 +22,7 @@ const resources = {
   },
   [Language.UA]: {
     translation: {
+      "title": "Погода",
       "Clouds": "Хмарно",
       "Sunny": "Сонячно",
       "Rain": "Дощ",
@@ -36,6 +38,7 @@ const resources = {
   },
   [Language.HE]: {
     translation: {
+      "title": "מזג אוויר",
       "Clouds": "עננים",
       "Sunny": "שִׁמשִׁי",
       "Rain": "גֶשֶׁם",

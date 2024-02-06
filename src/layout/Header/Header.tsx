@@ -28,6 +28,8 @@ function Header() {
       dispatch(changeLanguage(value));
       i18n.changeLanguage(value);
       document.body.dir = i18n.dir();
+      console.log(document.head.title);
+      document.title = i18n.t('title', {lng: value});
       setIsFocusSelect(false);
     }
   }
